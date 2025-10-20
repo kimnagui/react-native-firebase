@@ -183,6 +183,9 @@ export function modifySwiftAppDelegate(contents: string): string | null {
       return null;
     }
   }
+  if (contents.includes('url.host?.lowercased() == "firebaseauth"')) {
+    return contents;
+  }
   return contents.replace(pattern, `${fullMatch[0]}${skipOpenUrlForFirebaseAuthBlockSwift}\n`);
 }
 
